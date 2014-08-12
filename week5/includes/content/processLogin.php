@@ -1,7 +1,5 @@
 <?php
 
-include('connect.php');
-
 $email = (isset($_POST['email'])) ? $_POST['email'] : "";
 $password = (isset($_POST['password'])) ? md5(SALT . $_POST['password']) : "";
 $plainTextPassword = $_POST['password'];
@@ -17,6 +15,7 @@ if ($rows >= 1 ) {
 	// EMAIL FOUND IN DATABASE, RUN PASSWORD CHECK
 	while ($row = $results -> fetch_assoc()) {
 		if($row['password'] === $password) {
+			$_SESSION['id'] = $row['id'];
 			$_SESSION['first_name'] = $row['first_name'];
 			$_SESSION['last_name'] = $row['last_name'];
 			$_SESSION['logged_in'] = TRUE;

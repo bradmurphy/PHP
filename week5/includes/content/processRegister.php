@@ -1,7 +1,5 @@
 <?php
 
-include('connect.php');
-
 // echo "<pre>";
 // print_r($_POST);
 
